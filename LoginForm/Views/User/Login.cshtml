@@ -1,0 +1,47 @@
+﻿@model LoginForm.Models.User
+@{
+    Layout = null;
+    ViewBag.title = "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div style="text-align:center">
+        @using (Html.BeginForm("Login", "User", FormMethod.Post))
+        {
+            <fieldset style="width:40%;text-align:center;">
+                <legend>Login</legend>
+                <table>
+                    <tr>
+                       <td>@Html.LabelFor(u=>u.UserName)</td>
+                        <td>@Html.TextBoxFor(u=>u.UserName)</td>
+                        <td>@Html.ValidationMessageFor(u=>u.UserName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(u=>u.Password)</td>
+                        <td>@Html.PasswordFor(u=>u.Password)</td>
+                        <td>@Html.ValidationMessageFor(u=>u.Password)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="LOGIN" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@ViewBag.error</td>
+                    </tr>
+                </table>
+            </fieldset>
+        }
+
+    </div>
+</body>
+</html>
